@@ -1,0 +1,57 @@
+*,
+*: after,
+*: before {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 62.5%;
+  font-weight: 400;
+}
+
+.user-input-section {
+  align-items: center;
+  background-color: #E5F3F2;
+  display: flex;
+  justify-content: center;
+  height: 20rem;
+}
+
+header {
+  font-family: Roboto Slab;
+  font-weight: 700;
+}
+
+h1 {
+  color: #00A79D;
+}
+
+h1 span {
+  color: #6D6E71;
+}
+
+.save-idea-button {
+  background-color: #00A79D;
+  color: #FFFFFF;
+}
+
+.save-idea-button:hover {
+  background-color: #045E55;
+}
+
+.made-idea {
+
+}
+
+.made-idea h1 {
+  color: #6D6E71;
+}
+
+.made-idea p {
+  color: #939598;
+}
+
+.idea-quality {
+  color: #6D6E71;
+}
