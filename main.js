@@ -7,16 +7,18 @@ $saveButton.on('click', displayIdea);
 $titleInput.on('keyup', toggleButton);
 $bodyInput.on('keyup', toggleButton);
 
+
 function displayIdea(event) {
   event.preventDefault();
   var ideaTitle = $titleInput.val();
   var ideaBody = $bodyInput.val();
   $ideaCard.prepend
   (`<li>
-    <h1>${ideaTitle}</h1>
-    <button>x</button>
-    <p>${ideaBody}</p>
-    <button>
+    <article>
+      <h1>${ideaTitle}</h1>
+      <button class='delete-button'>x</button>
+      <p>${ideaBody}</p>
+    </article>
   </li>`);
   clearInputs();
 }
@@ -28,10 +30,18 @@ function clearInputs() {
 
 function toggleButton() {
   if ($titleInput.val() === '' || $bodyInput.val() === '') {
-    console.log('if');
     $saveButton.prop('disabled', true);
   } else {
-    console.log('else');
     $saveButton.prop('disabled', false);
   }
 }
+
+$('ul').on('click', 'li article .delete-button', deleteIdea);
+
+function deleteIdea() {
+ $(this).parent().remove();
+}
+
+
+
+
