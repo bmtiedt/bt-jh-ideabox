@@ -1,3 +1,8 @@
+body {
+  margin: 0;
+}
+
+
 *,
 *: after,
 *: before {
@@ -8,14 +13,15 @@ html {
   font-family: 'Open Sans', sans-serif;
   font-size: 62.5%;
   font-weight: 400;
+  height: 100vh;
 }
 
 .user-input-section {
   align-items: center;
   background-color: #E5F3F2;
   display: flex;
-  justify-content: center;
-  height: 20rem;
+  flex-direction: column;
+  height: 32rem;
 }
 
 header {
@@ -25,16 +31,29 @@ header {
 
 h1 {
   color: #00A79D;
-  font-size: 3rem;
+  font-size: 7rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 h1 span {
   color: #6D6E71;
 }
 
+.input-fields {
+  width: 65rem;
+  margin: .5rem;
+  font-size: 2rem;
+  padding-left: .5rem;
+  line-height: 3rem;
+  margin-bottom: 1.5rem;
+}
+
 .save-idea-button {
   background-color: #00A79D;
   color: #FFFFFF;
+  width: 66rem;
+  padding: .2rem;
 }
 
 .save-idea-button:hover {
