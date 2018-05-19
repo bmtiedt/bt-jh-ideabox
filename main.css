@@ -41,6 +41,12 @@ h1 span {
   background-color: #045E55;
 }
 
+.button {
+  background-image: url("images/upvote.svg");
+  height: 1rem;
+  width: 1rem;
+}
+
 .made-idea {
 
 }
