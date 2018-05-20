@@ -78,6 +78,91 @@ h1 span {
   color: #939598;
 }
 
-.idea-quality {
+ul {
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+}
+
+article {
+  border-bottom: 0.15rem solid #D1D3D4;
+  width: 66rem;
+}
+
+li { 
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+}
+
+li h1 {
   color: #6D6E71;
+  font-family: Roboto Slab;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+li h1 .delete-button {
+  
+}
+
+.delete-button {
+  background-image: url('images/delete.svg');
+  border: none;
+  float: right;
+  height: 3rem;
+  margin-top: 1.5rem;
+  width: 3rem;
+}
+
+.delete-button:hover {
+  background-image: url('images/delete-hover.svg');
+}
+
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.quality-button {
+  border: none;
+  height: 3rem;
+  margin: 0 1.5rem;
+  width: 3rem;
+}
+
+li h2 {
+  line-height: 5rem;
+  width: 11rem;
+  margin: 0 1.5rem;
+  color: #6D6E71;
+  font-weight: 700;
+}
+
+li p {
+  color: #939598;
+  font-size: 1.75rem;
+}
+
+.quality-button:hover {
+
+}
+
+.button-up {
+  background-image: url('images/upvote.svg');
+  margin-left: 0;
+}
+
+.button-up:hover {
+  background-image: url('images/upvote-hover.svg')
+}
+
+.button-down {
+  background-image: url('images/downvote.svg');
+}
+
+.button-down:hover {
+  background-image: url('images/downvote-hover.svg')
 }
