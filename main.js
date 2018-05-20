@@ -15,9 +15,14 @@ function displayIdea(event) {
   $ideaCard.prepend
   (`<li>
     <article>
+      <button class='delete-button'></button>
       <h1>${ideaTitle}</h1>
-      <button class='delete-button'>x</button>
       <p>${ideaBody}</p>
+      <div>
+      <button class="button-up quality-button"></button></buuton>
+      <button class="button-down quality-button"></button></button>
+      <h2>quality: swill</h2>
+      </div>
     </article>
   </li>`);
   clearInputs();
