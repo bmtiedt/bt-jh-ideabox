@@ -3,21 +3,18 @@ var $bodyInput = $('.body-input');
 var $saveButton = $('.save-idea-button');
 var $ideaCard = $('.idea-section');
 
-$saveButton.on('click', displayIdea);
+$saveButton.on('click', makeIdea);
 $titleInput.on('keyup', toggleButton);
 $bodyInput.on('keyup', toggleButton);
 
 
-function displayIdea(event) {
-  event.preventDefault();
-  var ideaTitle = $titleInput.val();
-  var ideaBody = $bodyInput.val();
+function displayIdea(info) {
   $ideaCard.prepend
   (`<li>
-    <article>
+    <article id=${info.id}>
       <button class='delete-button'></button>
-      <h1>${ideaTitle}</h1>
-      <p>${ideaBody}</p>
+      <h1>${info.title}</h1>
+      <p>${info.body}</p>
       <div>
       <button class="button-up quality-button"></button></buuton>
       <button class="button-down quality-button"></button></button>
@@ -27,6 +24,52 @@ function displayIdea(event) {
   </li>`);
   clearInputs();
 }
+
+function IdeaCreator(title, body) {
+  this.title = title;
+  this.body = body;
+  this.id = Date.now();
+}
+
+function makeIdea() {
+  var ideaTitle = $titleInput.val();
+  var ideaBody = $bodyInput.val();
+  var newIdea = new IdeaCreator(ideaTitle, ideaBody);
+  displayIdea(newIdea);
+  toLocalStorage(newIdea);
+}
+
+function toLocalStorage(object) {
+  var objectToStore = object;
+  var stringifiedObject = JSON.stringify(objectToStore);
+  localStorage.setItem(object.id, stringifiedObject);
+  setIdeaFromStorage();
+  // console.log(objectToStore);
+}
+
+$(document).ready(setIdeaFromStorage);
+
+$(window).on('storage', function(e) {
+  console.log('Heard Event', e);
+  setIdeaFromStorage();
+});
+
+function setIdeaFromStorage(object) {
+  var objectToDisplay = object.id;
+  var parsedObject = JSON.parse(objectToDisplay);
+  var cardId = localStorage.getItem(object.id);
+  console.log('Got ID', object.id);
+
+}
+
+//==================================
+// function retrieveItem(object) {
+//   var objectToParse = object;
+//   var parsedObject = JSON.parse(objectToParse);
+//   localStorage.getItem(object.id, parsedObject);
+// }
+//====================================
+
 
 function clearInputs() {
   $titleInput.val('');
@@ -46,7 +89,6 @@ $('ul').on('click', 'li article .delete-button', deleteIdea);
 function deleteIdea() {
  $(this).parent().remove();
 }
-
 
 
 
