@@ -2,7 +2,6 @@ body {
   margin: 0;
 }
 
-
 *,
 *: after,
 *: before {
@@ -66,33 +65,10 @@ h1 span {
   width: 1rem;
 }
 
-.made-idea {
-
-}
-
-.made-idea h1 {
-  color: #6D6E71;
-}
-
-.made-idea p {
-  color: #939598;
-}
-
-ul {
-  display: flex;
-  justify-content: center;
-  padding-left: 0;
-}
-
 article {
   border-bottom: 0.15rem solid #D1D3D4;
+  margin: 0;
   width: 66rem;
-}
-
-li { 
-  display: flex;
-  flex-direction: row;
-  list-style-type: none;
 }
 
 li h1 {
@@ -100,10 +76,6 @@ li h1 {
   font-family: Roboto Slab;
   font-size: 3rem;
   font-weight: 700;
-}
-
-li h1 .delete-button {
-  
 }
 
 .delete-button {
@@ -123,7 +95,6 @@ div {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 .quality-button {
@@ -144,10 +115,6 @@ li h2 {
 li p {
   color: #939598;
   font-size: 1.75rem;
-}
-
-.quality-button:hover {
-
 }
 
 .button-up {

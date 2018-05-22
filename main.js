@@ -10,7 +10,7 @@ $bodyInput.on('keyup', toggleButton);
 
 function displayIdea(info) {
   $ideaCard.prepend
-  (`<li>
+  (`<li id=${info.id}>
     <article id=${info.id}>
       <button class='delete-button'></button>
       <h1>${info.title}</h1>
@@ -43,33 +43,23 @@ function toLocalStorage(object) {
   var objectToStore = object;
   var stringifiedObject = JSON.stringify(objectToStore);
   localStorage.setItem(object.id, stringifiedObject);
-  setIdeaFromStorage();
+  // setIdeaFromStorage();
   // console.log(objectToStore);
 }
 
-$(document).ready(setIdeaFromStorage);
+// $(document).ready(setIdeaFromStorage);
 
-$(window).on('storage', function(e) {
-  console.log('Heard Event', e);
-  setIdeaFromStorage();
-});
+// $(window).on('storage', function(e) {
+//   console.log('Heard Event', e);
+//   setIdeaFromStorage();
+// });
 
-function setIdeaFromStorage(object) {
-  var objectToDisplay = object.id;
-  var parsedObject = JSON.parse(objectToDisplay);
-  var cardId = localStorage.getItem(object.id);
-  console.log('Got ID', object.id);
-
-}
-
-//==================================
-// function retrieveItem(object) {
-//   var objectToParse = object;
-//   var parsedObject = JSON.parse(objectToParse);
-//   localStorage.getItem(object.id, parsedObject);
+// function setIdeaFromStorage(object) {
+//   var objectToDisplay = object.id;
+//   var cardId = localStorage.getItem(object.id);
+//   var parsedObject = JSON.parse(objectToDisplay);
+//   console.log('Got ID', object.id);
 // }
-//====================================
-
 
 function clearInputs() {
   $titleInput.val('');
@@ -85,10 +75,16 @@ function toggleButton() {
 }
 
 $('ul').on('click', 'li article .delete-button', deleteIdea);
+$('ul').on('click', 'li article .button-up', upQuality);
 
 function deleteIdea() {
  $(this).parent().remove();
 }
 
-
+function upQuality() {
+ var $ideaQuality = $('h2');
+ var ideaQuality = $ideaQuality.val();
+ 
+ console.log(this.closest('article'));
+}
 
