@@ -84,7 +84,7 @@ h1 span {
 article {
   border-bottom: 0.15rem solid #D1D3D4;
   margin: 0 auto;
-  width: 68rem;
+  width: 68.5rem;
 }
 
 li h1 {
@@ -112,6 +112,7 @@ div {
   display: flex;
   justify-content: left;
   align-items: center;
+  padding-bottom: 2rem;
 }
 
 .quality-button {
