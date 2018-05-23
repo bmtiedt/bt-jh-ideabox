@@ -134,6 +134,9 @@ li h2 {
 li p {
   color: #939598;
   font-size: 1.75rem;
+  height: 6rem;
+  overflow: scroll;
+  width: 85%;
 }
 
 .button-up {

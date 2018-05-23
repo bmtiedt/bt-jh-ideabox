@@ -98,7 +98,7 @@ function deleteIdea() {
 }
 
 function upQuality() {
-  pullFromLocalStorage(this);
+  getIdeaFromStorage(this);
  var $ideaQuality = $('h2');
  var ideaQuality = $ideaQuality.val();
  if ($(this).siblings('h2').text() === 'quality: swill') {
@@ -110,7 +110,7 @@ function upQuality() {
 }
 
 function downQuality() {
-  pullFromLocalStorage(this);
+  getIdeaFromStorage(this);
  var $ideaQuality = $('h2');
  var ideaQuality = $ideaQuality.val();
  if ($(this).siblings('h2').text() === 'quality: genius') {
