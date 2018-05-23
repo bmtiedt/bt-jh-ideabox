@@ -15,6 +15,10 @@ html {
   height: 100vh;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .user-input-section {
   align-items: center;
   background-color: #E5F3F2;
@@ -59,16 +63,28 @@ h1 span {
   background-color: #045E55;
 }
 
+.save-idea-button-disabled {
+  background-color: #00A79D;
+  color: #FFFFFF;
+  width: 66rem;
+  padding: .2rem;
+}
+
 .button {
   background-image: url("images/upvote.svg");
   height: 1rem;
   width: 1rem;
 }
 
+.idea-section {
+  margin: 0;
+}
+
+
 article {
   border-bottom: 0.15rem solid #D1D3D4;
-  margin: 0;
-  width: 66rem;
+  margin: 0 auto;
+  width: 68.5rem;
 }
 
 li h1 {
@@ -83,8 +99,9 @@ li h1 {
   border: none;
   float: right;
   height: 3rem;
-  margin-top: 1.5rem;
+  margin: 0.5rem 2.5rem 0 0;
   width: 3rem;
+  outline: 0;
 }
 
 .delete-button:hover {
@@ -93,20 +110,22 @@ li h1 {
 
 div {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
+  padding-bottom: 2rem;
 }
 
 .quality-button {
   border: none;
   height: 3rem;
-  margin: 0 1.5rem;
+  margin: 0 1rem;
   width: 3rem;
+  outline: 0;
 }
 
 li h2 {
   line-height: 5rem;
-  width: 11rem;
+  width: 14rem;
   margin: 0 1.5rem;
   color: #6D6E71;
   font-weight: 700;

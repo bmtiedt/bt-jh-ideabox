@@ -1,6 +1,6 @@
 var $titleInput = $('.title-input');
 var $bodyInput = $('.body-input');
-var $saveButton = $('.save-idea-button');
+var $saveButton = $('#save-idea-button');
 var $ideaCard = $('.idea-section');
 
 $saveButton.on('click', makeIdea);
@@ -16,8 +16,8 @@ function displayIdea(info) {
       <h1>${info.title}</h1>
       <p>${info.body}</p>
       <div>
-      <button class="button-up quality-button"></button></buuton>
-      <button class="button-down quality-button"></button></button>
+      <button class='button-up quality-button'></button></buuton>
+      <button class='button-down quality-button'></button></button>
       <h2>quality: swill</h2>
       </div>
     </article>
@@ -37,6 +37,9 @@ function makeIdea() {
   var newIdea = new IdeaCreator(ideaTitle, ideaBody);
   displayIdea(newIdea);
   toLocalStorage(newIdea);
+  $saveButton.prop("disabled", true);
+  $saveButton.attr("class", "save-idea-button-disabled input-fields");
+
 }
 
 function toLocalStorage(object) {
@@ -64,18 +67,23 @@ function toLocalStorage(object) {
 function clearInputs() {
   $titleInput.val('');
   $bodyInput.val('');
+  $saveButton.prop('disabled', true);
 }
 
 function toggleButton() {
   if ($titleInput.val() === '' || $bodyInput.val() === '') {
     $saveButton.prop('disabled', true);
+    $saveButton.attr("class", 'save-idea-button-disabled input-fields');
   } else {
     $saveButton.prop('disabled', false);
+    $saveButton.attr('class', 'save-idea-button input-fields');
   }
 }
 
 $('ul').on('click', 'li article .delete-button', deleteIdea);
 $('ul').on('click', 'li article .button-up', upQuality);
+$('ul').on('click', 'li article .button-down', downQuality);
+
 
 function deleteIdea() {
  $(this).parent().remove();
@@ -84,7 +92,19 @@ function deleteIdea() {
 function upQuality() {
  var $ideaQuality = $('h2');
  var ideaQuality = $ideaQuality.val();
- 
- console.log(this.closest('article'));
+ if ($(this).siblings('h2').text() === 'quality: swill') {
+    $(this).siblings('h2').text('quality: plausible');
+ } else if ($(this).siblings('h2').text() === 'quality: plausible') {
+   $(this).siblings('h2').text('quality: genius');
+ } 
 }
 
+function downQuality() {
+ var $ideaQuality = $('h2');
+ var ideaQuality = $ideaQuality.val();
+ if ($(this).siblings('h2').text() === 'quality: genius') {
+    $(this).siblings('h2').text('quality: plausible');
+ } else if ($(this).siblings('h2').text() === 'quality: plausible') {
+   $(this).siblings('h2').text('quality: swill');
+ } 
+}
