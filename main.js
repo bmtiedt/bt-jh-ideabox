@@ -1,7 +1,12 @@
+ideaBox();
+
+function ideaBox() {
 var $titleInput = $('.title-input');
 var $bodyInput = $('.body-input');
 var $saveButton = $('#save-idea-button');
 var $ideaCard = $('.idea-section');
+var string;
+var object;
 
 $saveButton.on('click', makeIdea);
 $titleInput.on('keyup', toggleButton);
@@ -39,30 +44,33 @@ function makeIdea() {
   toLocalStorage(newIdea);
   $saveButton.prop("disabled", true);
   $saveButton.attr("class", "save-idea-button-disabled input-fields");
-
+  toLocalStorage(object);
+  clearInputs();
+  console.log('bing');
 }
 
 function toLocalStorage(object) {
   var objectToStore = object;
   var stringifiedObject = JSON.stringify(objectToStore);
-  localStorage.setItem(object.id, stringifiedObject);
-  // setIdeaFromStorage();
-  // console.log(objectToStore);
+  localStorage.setItem(object, stringifiedObject);
+  console.log('bang');
 }
 
-// $(document).ready(setIdeaFromStorage);
+function getIdeaFromStorage(object) {
+  var objectToDisplay = object.id;
+  string = localStorage.getItem(object.id);
+  object = JSON.parse(string);
+}
 
-// $(window).on('storage', function(e) {
-//   console.log('Heard Event', e);
-//   setIdeaFromStorage();
-// });
+function updateStorage(object) {
+  string = JSON.stringify(object);
+  localStorage.setItem(object.id, string);
+}
 
-// function setIdeaFromStorage(object) {
-//   var objectToDisplay = object.id;
-//   var cardId = localStorage.getItem(object.id);
-//   var parsedObject = JSON.parse(objectToDisplay);
-//   console.log('Got ID', object.id);
-// }
+ function deleteFromStorage(object) {
+  var objectToDelete = object.id;
+  string = localStorage.removeItem(objectToDelete);
+ }
 
 function clearInputs() {
   $titleInput.val('');
@@ -90,16 +98,19 @@ function deleteIdea() {
 }
 
 function upQuality() {
+  pullFromLocalStorage(this);
  var $ideaQuality = $('h2');
  var ideaQuality = $ideaQuality.val();
  if ($(this).siblings('h2').text() === 'quality: swill') {
     $(this).siblings('h2').text('quality: plausible');
  } else if ($(this).siblings('h2').text() === 'quality: plausible') {
    $(this).siblings('h2').text('quality: genius');
- } 
+ }
+ updateStorage(object); 
 }
 
 function downQuality() {
+  pullFromLocalStorage(this);
  var $ideaQuality = $('h2');
  var ideaQuality = $ideaQuality.val();
  if ($(this).siblings('h2').text() === 'quality: genius') {
@@ -107,4 +118,32 @@ function downQuality() {
  } else if ($(this).siblings('h2').text() === 'quality: plausible') {
    $(this).siblings('h2').text('quality: swill');
  } 
+ updateStorage(object);
+}
+
+function editTitle() {
+  title = $(this).text();
+  getIdeaFromStorage(this);
+  object.title = title;
+  updateStorage(object);
+  console.log('boom');
+}
+
+function editBody() {
+  body = $(this).text();
+  getIdeaFromStorage(this);
+  object.body = title;
+  updateStorage(object);
+  console.log('BOOM');
+}
+
+function onPageLoad() {
+  for (var i = 0; i < localStorage.length; i++) {
+    string = localStorage.getItem(localStorage.key(i));
+    object = JSON.parse(string);
+    displayIdea(object);
+    console.log('Got it');
+  }
+}
+onPageLoad();
 }
