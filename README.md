@@ -46,7 +46,7 @@ Your entire application will consist of one HTML page or template.
 * -[X] Upon clicking “Delete”, the appropriate idea should be removed from the list.
 * -[X] The page should not reload when an idea is deleted.
 * -[] The idea should be removed from localStorage. It should not re-appear on next page load.
-* -[X]Changing the quality of an idea
+* -[X] Changing the quality of an idea
   As we said above, ideas should start out as “swill.” In order to change the recorded quality of an idea, the user will      interact with it from the idea list.
 
 * -[X] Each idea in the list should include an “upvote” and “downvote” button.
