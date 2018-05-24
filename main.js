@@ -14,7 +14,6 @@ $bodyInput.on('keyup', toggleButton);
 
 
 function displayIdea(info) {
-  console.log(info);
   $ideaCard.prepend
   (`<li id=${info.id}>
     <article id=${info.id}>
@@ -46,31 +45,29 @@ function makeIdea() {
   $saveButton.prop("disabled", true);
   $saveButton.attr("class", "save-idea-button-disabled input-fields");
   clearInputs();
-  console.log('bing');
 }
 
 function toLocalStorage(object) {
   // var objectToStore = object;
   var stringifiedObject = JSON.stringify(object);
   localStorage.setItem(object.id, stringifiedObject);
-  console.log('bang');
 }
 
 function getIdeaFromStorage(object) {
   var objectToDisplay = object.id;
   var string = localStorage.getItem(object.id);
-  var object = JSON.parse(string);
-  displayIdea(object);
+  object = JSON.parse(string);
+  // displayIdea(object);
 }
 
 function updateStorage(object) {
-  var string = JSON.stringify(object);
+  string = JSON.stringify(object);
   localStorage.setItem(object.id, string);
 }
 
  function deleteFromStorage(object) {
   var objectToDelete = object.id;
-  var string = localStorage.removeItem(objectToDelete);
+  string = localStorage.removeItem(objectToDelete);
  }
 
 function clearInputs() {
@@ -127,7 +124,6 @@ function editTitle() {
   getIdeaFromStorage(this);
   object.title = title;
   updateStorage(object);
-  console.log('boom');
 }
 
 function editBody() {
@@ -135,7 +131,6 @@ function editBody() {
   getIdeaFromStorage(this);
   object.body = title;
   updateStorage(object);
-  console.log('BOOM');
 }
 
 function onPageLoad() {
@@ -143,7 +138,6 @@ function onPageLoad() {
     string = localStorage.getItem(localStorage.key(i));
     object = JSON.parse(string);
     displayIdea(object);
-    console.log('Got it');
   }
 }
 onPageLoad();
