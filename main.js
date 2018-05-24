@@ -14,12 +14,13 @@ $bodyInput.on('keyup', toggleButton);
 
 
 function displayIdea(info) {
+  console.log(info);
   $ideaCard.prepend
   (`<li id=${info.id}>
     <article id=${info.id}>
       <button class='delete-button'></button>
-      <h1>${info.title}</h1>
-      <p>${info.body}</p>
+      <h1 contenteditable>${info.title}</h1>
+      <p contenteditable>${info.body}</p>
       <div>
       <button class='button-up quality-button'></button></buuton>
       <button class='button-down quality-button'></button></button>
@@ -44,32 +45,32 @@ function makeIdea() {
   toLocalStorage(newIdea);
   $saveButton.prop("disabled", true);
   $saveButton.attr("class", "save-idea-button-disabled input-fields");
-  toLocalStorage(object);
   clearInputs();
   console.log('bing');
 }
 
 function toLocalStorage(object) {
-  var objectToStore = object;
-  var stringifiedObject = JSON.stringify(objectToStore);
-  localStorage.setItem(object, stringifiedObject);
+  // var objectToStore = object;
+  var stringifiedObject = JSON.stringify(object);
+  localStorage.setItem(object.id, stringifiedObject);
   console.log('bang');
 }
 
 function getIdeaFromStorage(object) {
   var objectToDisplay = object.id;
-  string = localStorage.getItem(object.id);
-  object = JSON.parse(string);
+  var string = localStorage.getItem(object.id);
+  var object = JSON.parse(string);
+  displayIdea(object);
 }
 
 function updateStorage(object) {
-  string = JSON.stringify(object);
+  var string = JSON.stringify(object);
   localStorage.setItem(object.id, string);
 }
 
  function deleteFromStorage(object) {
   var objectToDelete = object.id;
-  string = localStorage.removeItem(objectToDelete);
+  var string = localStorage.removeItem(objectToDelete);
  }
 
 function clearInputs() {
