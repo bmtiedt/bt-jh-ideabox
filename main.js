@@ -15,7 +15,7 @@ $bodyInput.on('keyup', toggleButton);
 
 function displayIdea(info) {
   $ideaCard.prepend
-  (`<li id=${info.id}>
+  (`<li>
     <article id=${info.id}>
       <button class='delete-button'></button>
       <h1 contenteditable>${info.title}</h1>
@@ -39,7 +39,7 @@ function IdeaCreator(title, body) {
 function makeIdea() {
   var ideaTitle = $titleInput.val();
   var ideaBody = $bodyInput.val();
-  var newIdea = new IdeaCreator(ideaTitle, ideaBody);
+  var newIdea = new IdeaCreator(ideaTitle, ideaBody, null);
   displayIdea(newIdea);
   toLocalStorage(newIdea);
   $saveButton.prop("disabled", true);
@@ -48,27 +48,15 @@ function makeIdea() {
 }
 
 function toLocalStorage(object) {
-  // var objectToStore = object;
   var stringifiedObject = JSON.stringify(object);
   localStorage.setItem(object.id, stringifiedObject);
 }
 
 function getIdeaFromStorage(object) {
   var objectToDisplay = object.id;
-  var string = localStorage.getItem(object.id);
+  var string = localStorage.getItem(object.id, objectToDisplay);
   object = JSON.parse(string);
-  // displayIdea(object);
 }
-
-function updateStorage(object) {
-  string = JSON.stringify(object);
-  localStorage.setItem(object.id, string);
-}
-
- function deleteFromStorage(object) {
-  var objectToDelete = object.id;
-  string = localStorage.removeItem(objectToDelete);
- }
 
 function clearInputs() {
   $titleInput.val('');
@@ -92,7 +80,8 @@ $('ul').on('click', 'li article .button-down', downQuality);
 
 
 function deleteIdea() {
- $(this).parent().remove();
+ $(this).parent('article').remove();
+ localStorage.removeItem($(this).closest('article').attr('id'));
 }
 
 function upQuality() {
@@ -104,7 +93,6 @@ function upQuality() {
  } else if ($(this).siblings('h2').text() === 'quality: plausible') {
    $(this).siblings('h2').text('quality: genius');
  }
- updateStorage(object); 
 }
 
 function downQuality() {
@@ -116,7 +104,6 @@ function downQuality() {
  } else if ($(this).siblings('h2').text() === 'quality: plausible') {
    $(this).siblings('h2').text('quality: swill');
  } 
- updateStorage(object);
 }
 
 function editTitle() {
