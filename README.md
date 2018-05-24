@@ -14,11 +14,11 @@ JSON and localStorage to persist data between sessions.
 Your entire application will consist of one HTML page or template.
 
 ## Data Model
-*-[X] An Idea has an id, title, a body, and a quality.
-*-[X] The id should be a unique identifier.
-*-[X] title and body are free-form strings.
-*-[X] quality should be one of the follow: “genius”, “plausible”, and “swill.”
-*-[X] By default, the idea’s “quality” should default to the lowest setting (i.e. “swill”).
+* - [X] An Idea has an id, title, a body, and a quality.
+* - [X] The id should be a unique identifier.
+* - [X] title and body are free-form strings.
+* - [X] quality should be one of the follow: “genius”, “plausible”, and “swill.”
+* - [X] By default, the idea’s “quality” should default to the lowest setting (i.e. “swill”).
 
 ###User Flows
 ###Viewing ideas
